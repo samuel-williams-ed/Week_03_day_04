@@ -1,13 +1,48 @@
 <html>
     <head>
         <title>{{ title }} - My To-Do List</title>
+        <link rel="stylesheet" href="/flask_templates_start/styles/style.css">
     </head>
     <body>
         <h1>My Todo List!</h1>
+        <!-- form for user to fill in new ToDo item -->
+
+        <!-- action is what form this should post to when called -->
+        <!-- remember to follow RESTful pattern when designing target URL/id-->
+
+        <!-- form element is what provides the functionality of sending the data NOT UX elements-->
+
+        <form action="" method="post">
+        
+          <!-- label 'for' and input 'id' need to match -->
+          <!-- label provides accessibility - can tab into and screen read -->
+          <!-- 'name' of the input element is the 'key' value for the data we're sending -->
+          <!-- when a form receives a submit - it sends a 'method' request - so here a POST request -->
+          <p>Title</p>
+          <label for="title"></label>
+          <input id="title" type="text" name="user_sent_title">
+
+          <br>
+          
+          <p>Description</p>
+          <label for="description"></label>
+          <input id="description" type="text" name="user_sent_description">
+
+          <!-- 'value' attribute for a 'submit' type is the text on input element -->
+          <br>
+          <br>
+          <input type="submit" value="Add Task">
+
+        </form>
+
         {% for task in tasks %}  
+        <!-- some Jinja in here ^ -->
         <div>
           <p>
             {{ task.title }}: <b>{{ task.description }}</b>
+            {% if task.done %}
+            <span>&#9989</span>
+            {% endif %}
           </p>
         </div>
         {% endfor %}

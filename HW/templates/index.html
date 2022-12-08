@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Events</h1>
+
+    <h2>Create New Event:</h2>
+    <!-- input_date,
+    input_name,
+    input_no_of_guests,
+    input_room_location,
+    input_description,
+    input_recurring -->
+        <form action="/test" method="POST">
+            <label for="date">Date</label>
+            <input type="datetime-local" name="input_date" id="date" value="2022-08-01T08:30">
+            <br>
+            <label for="name">Name</label>
+            <input type="text" name="input_name" id="name">
+            <br>
+            <label for="number_of_guests">Number of guests:</label>
+            <input type="text" name="input_no_of_guests", id="number_of_guests">
+            <br>
+            <label for="room_location">Room location:</label>
+            <input type="text" name="input_room_location" id="room_location">
+            <br>
+            <label for="description">Description:</label>
+            <input type="text" name="input_description" id="description">
+            <br>
+            <label for="recurring">Recurring</label>
+            <input type="text" name="input_recurring" id="recurring">
+            <br>
+            <input type="submit" value="Add Event">
+
+        </form>
+
+        <h2>Events Coming Up:</h2>
+    {% for event in event_list %}  
+    <div>
+    <p>
+        {{ event.name }}: <b>{{ event.description }} 
+            {% if event.recurring %}
+                <p> and we look forward to it again next year! <span>&#128293;</span></p>
+            {% else %}
+                <p> sady, never to occur ever again. <span>&#128546</span></p>
+            {% endif %}
+        </b>
+    </p>
+    </div>
+    {% endfor %}
+</body>
+</html>

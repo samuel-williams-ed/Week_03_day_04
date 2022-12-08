@@ -32,7 +32,9 @@ def create():
     # take data from the form and create a new task
     # NB as soon as we make a change to file and refresh HTML the data will reset to initial state
     new_task = Task(accessed_title, accessed_description, True)
-    tasks.append(new_task)
+    Task.add_task(new_task)
+    # allows modular adding of a task. 
+    # logic for new tasks is kept within the Task class
 
     # # when the create() fucntion is called we return the homepage - temp, for tidiness
     # return index()
